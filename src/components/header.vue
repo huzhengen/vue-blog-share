@@ -16,6 +16,7 @@
       <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <div class="user">
         <!-- <img class="avatar" :src="user.avatar" :alt="user.email" :title="user.email"> -->
+        {{user.email}}
         <ul>
           <li>
             <router-link to="/my">我的</router-link>
@@ -36,7 +37,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["isLogin", "user"])
+    ...mapGetters(["isLogin", "user"]),
   },
   created() {
     this.checkLogin();
@@ -45,8 +46,8 @@ export default {
     ...mapActions(["checkLogin", "logout"]),
     onLogout() {
       this.logout();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -65,7 +66,7 @@ header.no-login {
     font-size: 40px;
     margin: 30px 0 0 0;
     text-transform: uppercase;
-    a{
+    a {
       color: #fff;
     }
   }
@@ -97,7 +98,7 @@ header.login {
     font-size: 30px;
     text-transform: uppercase;
     flex: 1;
-    a{
+    a {
       color: #fff;
     }
   }
@@ -117,7 +118,9 @@ header.login {
 
   .user {
     position: relative;
-    font-size: 0;
+    font-size: 16px;
+    color: #fff;
+    padding-left: 10px;
     ul {
       display: none;
       position: absolute;

@@ -1,7 +1,7 @@
 <template>
   <div id="my">
     <section class="user-info">
-      <img :src="user.avatar" :alt="user.email" :title="user.email" class="avatar">
+      <!-- <img :src="user.avatar" :alt="user.email" :title="user.email" class="avatar"> -->
       <h3>{{user.email}}</h3>
     </section>
     <section v-if="blogs.length">
