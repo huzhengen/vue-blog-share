@@ -2,9 +2,9 @@ import request from '../helpers/request.js'
 
 const URL = {
     REGISTER: '/users/',
-    LOGIN: '/users/sign_in',
+    LOGIN: '/sessions/',
     LOGOUT: '/auth/logout',
-    GET_INFO: '/auth'
+    GET_INFO: '/me'
 }
 
 export default {

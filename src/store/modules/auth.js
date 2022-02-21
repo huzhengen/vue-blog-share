@@ -46,7 +46,7 @@ const actions = {
         let res = await auth.getInfo()
         commit('setLogin', { isLogin: res.isLogin })
         if (!res.isLogin) return false
-        commit('setUser', { user: res.data })
+        commit('setUser', { user: res.resource })
         return true
     },
 }

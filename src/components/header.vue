@@ -15,7 +15,7 @@
       <h1><router-link to="/">一起共享博客吧</router-link></h1>
       <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <div class="user">
-        <img class="avatar" :src="user.avatar" :alt="user.email" :title="user.email">
+        <!-- <img class="avatar" :src="user.avatar" :alt="user.email" :title="user.email"> -->
         <ul>
           <li>
             <router-link to="/my">我的</router-link>
