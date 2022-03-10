@@ -1,7 +1,7 @@
 <template>
   <div id="detail">
     <section class="user-info">
-      <img :src="user.avatar" :alt="user.email" :title="user.email" class="avatar">
+      <img :src="user.gravatar_url" :alt="user.email" :title="user.email" class="avatar">
       <h3>{{title}}</h3>
       <p>
         <router-link :to="`/user/${user.id}`">{{user.email}}</router-link>

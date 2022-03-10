@@ -6,14 +6,15 @@ export default {
             title: '',
             description: '',
             content: '',
-            atIndex: false,
+            at_index: true,
         }
     },
     methods:{
         onCreate(){
-            blog.createBlog({title:this.title,description:this.description,content:this.content,atIndex:this.atIndex}).then(res=>{
+            blog.createBlog({title:this.title,description:this.description,content:this.content,at_index:this.at_index}).then(res=>{
+                console.log('createBlog', res);
                 this.$message.success(res.msg)
-                this.$router.push({path:`/detail/${res.data.id}`})
+                this.$router.push({path:`/detail/${res.resource.id}`})
             })
         }
     }

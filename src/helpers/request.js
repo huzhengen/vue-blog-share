@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
+import {
+    Message
+} from 'element-ui'
 
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
@@ -18,7 +20,7 @@ export default function request(url, type = 'GET', data = {}) {
             option.data = data
         }
         axios(option).then(res => {
-            console.log(res);
+            console.log('axios then', res);
             if (res.status === 200) {
                 resolve(res.data)
             } else {
@@ -26,7 +28,7 @@ export default function request(url, type = 'GET', data = {}) {
                 reject(res.data)
             }
         }).catch(err => {
-            console.log(err.response);
+            console.log('axios error', err.response);
             Message.error(err.response.data.error)
             reject(err.response)
             // resolve(error)

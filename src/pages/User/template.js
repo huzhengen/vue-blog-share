@@ -13,11 +13,11 @@ export default {
         this.userId = this.$route.params.userId
         this.page = this.$route.query.page || 1
         blog.getBlogsByUserId(this.userId, { page: this.page }).then(res => {
-            this.blogs = res.data
+            this.blogs = res.resource
             this.page = res.page
             this.total = res.total
-            if (res.data.length > 0) {
-                this.user = res.data[0].user
+            if (res.resource.length > 0) {
+                this.user = res.resource[0].user
             }
         })
     },
@@ -32,11 +32,11 @@ export default {
         },
         onPageChange(newPage) {
             blog.getBlogsByUserId(this.userId, { page: newPage }).then(res => {
-                this.blogs = res.data
+                this.blogs = res.resource
                 this.page = res.page
                 this.total = res.total
-                if (res.data.length > 0) {
-                    this.user = res.data[0].user
+                if (res.resource.length > 0) {
+                    this.user = res.resource[0].user
                 }
                 this.$router.push({ path: `/user/${this.userId}`, query: { page: newPage } })
             })

@@ -1,15 +1,15 @@
 <template>
   <div id="my">
     <section class="user-info">
-      <!-- <img :src="user.avatar" :alt="user.email" :title="user.email" class="avatar"> -->
+      <img :src="user.gravatar_url" :alt="user.email" :title="user.email" class="avatar">
       <h3>{{user.email}}</h3>
     </section>
     <section v-if="blogs.length">
       <router-link class="item" :to="`/detail/${blog.id}`" v-for="blog in blogs" :key="blog.id">
         <div class="date">
-          <span class="day">{{splitDate(blog.createdAt).date}}</span>
-          <span class="month">{{splitDate(blog.createdAt).month}}月</span>
-          <span class="year">{{splitDate(blog.createdAt).year}}</span>
+          <span class="day">{{splitDate(blog.created_at).date}}</span>
+          <span class="month">{{splitDate(blog.created_at).month}}月</span>
+          <span class="year">{{splitDate(blog.created_at).year}}</span>
         </div>
         <h3>{{blog.title}}</h3>
         <p>{{blog.description}}</p>

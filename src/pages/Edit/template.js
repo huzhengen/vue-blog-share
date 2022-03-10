@@ -7,23 +7,23 @@ export default {
             title: '',
             description: '',
             content: '',
-            atIndex: false,
+            at_index: false,
         }
     },
     created() {
         this.blogId = this.$route.params.blogId
         blog.getDetail({ blogId: this.blogId }).then(res => {
-            this.title = res.data.title
-            this.description = res.data.description
-            this.content = res.data.content
-            this.atIndex = res.data.atIndex
+            this.title = res.resource.title
+            this.description = res.resource.description
+            this.content = res.resource.content
+            this.at_index = res.resource.at_index
         })
     },
     methods: {
         onEdit() {
-            blog.updateBlog({ blogId: this.blogId }, { title: this.title, description: this.description, content: this.content, atIndex: this.atIndex }).then(res => {
+            blog.updateBlog({ blogId: this.blogId }, { title: this.title, description: this.description, content: this.content, at_index: this.at_index }).then(res => {
                 this.$message.success(res.msg)
-                this.$router.push({ path: `/detail/${res.data.id}` })
+                this.$router.push({ path: `/detail/${res.resource.id}` })
             })
         }
     }

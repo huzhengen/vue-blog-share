@@ -23,22 +23,23 @@ const mutations = {
 const actions = {
     login({ commit }, { email, password }) {
         return auth.login({ email, password }).then(res => {
-            commit('setUser', { user: res.data })
+            commit('setUser', { user: res.resource })
             commit('setLogin', { isLogin: true })
         })
     },
 
     async register({ commit }, { email, password,password_confirmation }) {
         let res = await auth.register({ email, password,password_confirmation })
-        commit('setUser', { user: res.data })
-        commit('setLogin', { isLogin: true })
-        return res.data
+        // commit('setUser', { user: res.data })
+        // commit('setLogin', { isLogin: true })
+        return res.resource
     },
 
     async logout({ commit }) {
-        await auth.logout()
+        let res = await auth.logout()
         commit('setUser', { user: null })
         commit('setLogin', { isLogin: false })
+        return res
     },
 
     async checkLogin({ commit, state }) {

@@ -3,7 +3,7 @@ import request from '../helpers/request.js'
 const URL = {
     REGISTER: '/users/',
     LOGIN: '/sessions/',
-    LOGOUT: '/auth/logout',
+    LOGOUT: '/sessions/',
     GET_INFO: '/me'
 }
 
@@ -17,7 +17,7 @@ export default {
     },
 
     logout() {
-        return request(URL.LOGOUT)
+        return request(URL.LOGOUT, 'DELETE')
     },
 
     getInfo() {

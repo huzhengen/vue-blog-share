@@ -4,20 +4,22 @@
       <div class="item" v-for="blog in blogs" :key="blog.id">
         <figure class="avatar" v-if="blog.user">
           <router-link :to="`/user/${blog.user.id}`">
-            <img :src="blog.user.avatar" :alt="blog.user.email">
+            <img :src="blog.user.gravatar_url" :alt="blog.user.email">
             <figcaption>{{blog.user.email}}</figcaption>
           </router-link>
         </figure>
-        <h3 v-if="blog.user">
+        <!-- <h3 v-if="blog.user"> -->
+        <h3>
           <router-link :to="`/detail/${blog.id}`">
             {{blog.title}}
-            <span>{{friendlyDate(blog.createdAt)}}</span>
+            <span>{{friendlyDate(blog.created_at)}}</span>
           </router-link>
         </h3>
-        <p v-if="blog.user">{{blog.description}}</p>
+        <!-- <p v-if="blog.user">{{blog.description}}</p> -->
+        <p>{{blog.description}}</p>
       </div>
     </section>
-    <section class="pagination">
+    <section class="pagination" v-if="blogs.length">
       <el-pagination
         :current-page="page"
         layout="prev,pager,next"

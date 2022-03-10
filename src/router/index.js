@@ -83,6 +83,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requireAuth)) {
         store.dispatch('checkLogin').then(isLogin => {
+            console.log('router beforeEach', isLogin);
             if (!isLogin) {
                 next({
                     path: '/login',

@@ -18,11 +18,10 @@ export default {
                 password: this.password,
                 password_confirmation: this.password_confirmation
             }).then(res => {
-                console.log(1, res);
                 this.$router.push({
-                    path: '/'
+                    path: '/login'
                 })
-            }).catch(err=>{
+            }).catch(err => {
                 console.log(2, err);
             })
         },
