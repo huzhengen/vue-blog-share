@@ -5,8 +5,8 @@ import {
 export default {
     data() {
         return {
-            email: '',
-            password: '',
+            email: 'sk',
+            password: '123456',
             password_confirmation: '',
         }
     },
