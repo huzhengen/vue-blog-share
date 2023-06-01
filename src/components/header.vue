@@ -1,7 +1,7 @@
 <template>
   <header :class="{login: isLogin, 'no-login': !isLogin}">
     <template v-if="!isLogin">
-      <h1><router-link to="/">一起写博客</router-link></h1>
+      <h1><router-link to="/">时空博客</router-link></h1>
       <div class="btns">
         <router-link to="/login">
           <el-button>立即登录</el-button>
@@ -12,7 +12,7 @@
       </div>
     </template>
     <template v-if="isLogin">
-      <h1><router-link to="/">一起写博客</router-link></h1>
+      <h1><router-link to="/">时空博客</router-link></h1>
       <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <div class="user">
         <!-- <img class="avatar" :src="user.gravatar_url" :alt="user.email" :title="user.email"> -->
@@ -40,20 +40,15 @@ export default {
     ...mapGetters(["isLogin", "user"]),
   },
   created() {
-    console.log('header created1', this.isLogin);
     this.checkLogin();
-    console.log('header created2', this.isLogin);
   },
   mounted(){
-    console.log('header mounted1', this.isLogin);
     this.checkLogin();
-    console.log('header mounted2', this.isLogin);
   },
   methods: {
     ...mapActions(["checkLogin", "logout"]),
     async onLogout() {
       const res = await this.logout();
-      console.log("logout", res);
       if (!res.isLogin) {
         this.$router.push({
           path: this.$route.query.redirect || "/",

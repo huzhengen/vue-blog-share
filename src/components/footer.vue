@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>© hukai.ink 2019</p>
+    <p>© blog.hukai.ink 2023</p>
   </footer>
 </template>
 

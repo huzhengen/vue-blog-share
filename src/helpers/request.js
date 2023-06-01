@@ -5,7 +5,7 @@ import {
 
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.baseURL = '/'
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://123.57.85.69:3001/' : '/'
 axios.defaults.withCredentials = true
 
 export default function request(url, type = 'GET', data = {}) {
@@ -20,7 +20,6 @@ export default function request(url, type = 'GET', data = {}) {
             option.data = data
         }
         axios(option).then(res => {
-            console.log('axios then', res);
             if (res.status === 200) {
                 resolve(res.data)
             } else {
@@ -28,7 +27,6 @@ export default function request(url, type = 'GET', data = {}) {
                 reject(res.data)
             }
         }).catch(err => {
-            console.log('axios error', err.response);
             Message.error(err.response.data.error)
             reject(err.response)
             // resolve(error)
