@@ -15,8 +15,6 @@ a{
   color: #333;
 }
 
-
-
 .el-button {
   color: @themeColor;
   border: 1px solid @themeLighterColor;
@@ -31,14 +29,24 @@ a{
   line-height: 28px;
 }
 
+.el-button:focus, .el-button:hover {
+  color: @themeColor!important;
+  border-color: @themeColor!important;
+  background-color: #fff!important;
+}
 
-.el-button:hover {
-  color: #fff;
-  background-color: @themeLighterColor;
+.el-button:active {
+  color: @themeColor!important;
+  border-color: @themeColor!important;
+  outline: 0;
 }
 
 .el-input.is-active .el-input__inner, .el-input__inner:focus, .el-textarea__inner:focus {
   border-color: @themeLighterColor;
+}
+
+.el-pager li.active{
+  color: @themeColor!important;
 }
 
 input{
