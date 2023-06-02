@@ -1,7 +1,7 @@
 <template>
   <div id="register">
     <h4>邮箱</h4>
-    <input v-model="email" placeholder="用户名">
+    <input v-model="email" placeholder="邮箱">
     <h4>密码</h4>
     <input v-model="password" type="password" placeholder="密码">
     <h4>确认密码</h4>
