@@ -5,8 +5,10 @@ import {
 
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://123.57.85.69:3001/' : '/'
+// axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'http://123.57.85.69:3001/' : 'http://123.57.85.69:3001/'
+axios.defaults.baseURL = '/'
 axios.defaults.withCredentials = true
+axios.defaults.crossDomain = true
 
 export default function request(url, type = 'GET', data = {}) {
     return new Promise((resolve, reject) => {
