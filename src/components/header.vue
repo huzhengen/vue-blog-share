@@ -1,67 +1,69 @@
 <template>
-  <header :class="{login: isLogin, 'no-login': !isLogin}">
-    <template v-if="!isLogin">
+  <header class="login">
+    <template>
       <h1><router-link to="/">时空博客</router-link></h1>
-      <div class="btns">
-        <router-link to="/login">
-          <el-button>立即登录</el-button>
-        </router-link>
-        <router-link to="/register">
-          <el-button>注册账号</el-button>
-        </router-link>
-      </div>
-    </template>
-    <template v-if="isLogin">
-      <h1><router-link to="/">时空博客</router-link></h1>
-      <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
-      <div class="user">
-        <!-- <img class="avatar" :src="user.gravatar_url" :alt="user.email" :title="user.email"> -->
-        {{user.email}}
-        <ul>
-          <li>
-            <router-link to="/my">我的</router-link>
-          </li>
-          <li>
-            <a href="javascript:;" @click="onLogout">注销</a>
-          </li>
-        </ul>
+      <template v-if="isLogin">
+        <router-link to="/create"
+          ><i class="edit el-icon-plus"></i
+        ></router-link>
+        <div class="user">
+          <!-- <img class="avatar" :src="user.gravatar_url" :alt="user.email" :title="user.email"> -->
+          {{ user.email }}
+          <ul>
+            <li>
+              <router-link to="/my">我的</router-link>
+            </li>
+            <li>
+              <a href="javascript:;" @click="onLogout">注销</a>
+            </li>
+          </ul>
+        </div>
+      </template>
+      <div v-if="!isLogin">
+        <div class="btns">
+          <router-link to="/login">
+            立即登录
+          </router-link>
+          <router-link to="/register">
+            注册账号
+          </router-link>
+        </div>
       </div>
     </template>
   </header>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
-    return {};
+    return {}
   },
   computed: {
-    ...mapGetters(["isLogin", "user"]),
+    ...mapGetters(['isLogin', 'user']),
   },
   created() {
-    this.checkLogin();
+    this.checkLogin()
   },
-  mounted(){
-    this.checkLogin();
-  },
+  // mounted() {
+  //  this.checkLogin()
+  // },
   methods: {
-    ...mapActions(["checkLogin", "logout"]),
+    ...mapActions(['checkLogin', 'logout']),
     async onLogout() {
-      const res = await this.logout();
+      const res = await this.logout()
       if (!res.isLogin) {
         this.$router.push({
-          path: this.$route.query.redirect || "/",
-        });
+          path: this.$route.query.redirect || '/',
+        })
       }
     },
   },
-};
+}
 </script>
 
-
 <style lang="less">
-@import "../assets/base.less";
+@import '../assets/base.less';
 
 header.no-login {
   padding: 0 12% 30px 12%;
@@ -107,6 +109,13 @@ header.login {
     text-transform: uppercase;
     flex: 1;
     a {
+      color: #fff;
+    }
+  }
+
+  .btns {
+    a {
+      margin: 0 5px 0 0;
       color: #fff;
     }
   }
