@@ -7,13 +7,13 @@ export default {
             title: '',
             rawContent: '',
             user: {},
-            createdAt: '',
+            createdAt: new Date(),
+            blogId: '',
         }
     },
     created() {
         this.blogId = this.$route.params.blogId
         blog.getDetail({ blogId: this.blogId }).then(res => {
-            console.log('detail', res);
             this.title = res.resource.title
             this.rawContent = res.resource.content
             this.createdAt = res.resource.created_at

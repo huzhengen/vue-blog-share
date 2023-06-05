@@ -6,6 +6,7 @@
       <p>
         <router-link :to="`/user/${user.id}`">{{user.email}}</router-link>
         发布于{{friendlyDate(createdAt)}}
+         <router-link :to="`/edit/${blogId}`">编辑</router-link>
       </p>
     </section>
     <section class="article" v-html="markdown"></section>
